@@ -36,20 +36,23 @@ When using the median-of-three method:
 
 - We select the first, middle and last elements of the array segment being sorted.
 - Each of these elements has an independent $1/2$ probability of being a good pivot.
-- The median of these three will be considered a good pivot unless all three are in the lower 25% or the upper 25% of the array. The probability of this happening is $(1/4)^3$ + $(1/4)^3$ for the lower and upper extremes.
+- The median of these three will be considered a good pivot unless all three are in the lower 25% or the upper 25% of the array. 
   
-    (**Simplification**: if an array is divided into four equal quartiles. 1/4 represents the probability of any single element to fall into one of the four quartiles. Typically we would want the element to fall into the second or third quartile - the middle 50% - for it to be considered a good pivot.)
 
-### Probability Analysis:
-Calculating the probability that the median-of-three is not a good pivot choice:
-- Probability that all three elements are in the lower quartile: $(1/4)^3$
-- Probability that all three elements are in the upper quartile: $(1/4)^3$
-- Combined probability of both scenarios occuring: $2 * (1/4)^3 = 1/32$
+### Probability Analysis for Median-of-Three:
+Calculating the probability that the median-of-three is a good pivot choice:
+- **All Three Elements Are Good Pivots**: The probability is $\left(\frac{1}{2}\right)^3 = \frac{1}{8}$, because each has a $\frac{1}{2}$ chance of being in the desirable middle 50%.
+- **Two Elements Are Good Pivots, One is Bad**: There are three combinations for this, each with a probability of $\left(\frac{1}{2}\right)^2 * \left(\frac{1}{2}\right) = \frac{1}{8}$  With three possible combinations, the total probability is $3 \times \frac{1}{8} = \frac{3}{8}$.
+- **One Element is a Good Pivot, Two Are Bad**: The median can still be a good pivot if the single good element is the median among the three. There are three combinations for this, each with a probability of $\left(\frac{1}{2}\right) * \left(\frac{1}{2}\right)^2 = \frac{1}{8}$. However, since the good pivot must be the median, we multiply by $\frac{1}{3}$, giving us $3 * \frac{1}{8} * \frac{1}{3} = \frac{1}{8}$
 
-This means the probability that the median-of-three method results in a good pivot choice is $1 - 1/32 = 31/32$, which is significantly higher than the $1/2$ probability when choosing the first element.
+The combined probability of getting a good pivot with the median-of-three method is $\frac{1}{8} + \frac{3}{8} + \frac{1}{8} = \frac{5}{8}$ or 62.5%. This is a simplification and the actual detailed computation considering the distribution of the 'good' pivots and the fixed positions of the first, middle and last elements would result in a percentage closer to the 68.75% mark. 
 
-**Conclusion**:
-The median-of-three method has a significantly higher probability of choosing a good pivot in comparison to the first-element method. The median-of-three method increases the likelihood of dividing the array into two equal parts, leading  to a more efficient quicksort with fewer comparisons and swaps on average. Thus allowing quicksort to achieve its average-case complexity of $Θ(nlogn)$.
+**Reference**: https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort#:~:text=By%20the%20median%2C%20we%20mean,You%20can%20go%20even%20further.
+
+## Conclusion
+
+The median-of-three method statistically increases the efficiency of quicksort by increasing the chances of selecting a centrally located pivot, compared to the first-element method. While the first-element method has a 50% chance of picking a good pivot, the median-of-three method improves this probability to about 62.5%. This approach leads to more balanced partitions and helps quicksort achieve its optimal average-case performance of $Θ(n\ log n)$
+
 
 
 
