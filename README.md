@@ -45,7 +45,7 @@ Calculating the probability that the median-of-three is a good pivot choice:
 - **Two Elements Are Good Pivots, One is Bad**: There are three combinations for this, each with a probability of $\left(\frac{1}{2}\right)^2 * \left(\frac{1}{2}\right) = \frac{1}{8}$  With three possible combinations, the total probability is $3 \times \frac{1}{8} = \frac{3}{8}$.
 - **One Element is a Good Pivot, Two Are Bad**: The median can still be a good pivot if the single good element is the median among the three. There are three combinations for this, each with a probability of $\left(\frac{1}{2}\right) * \left(\frac{1}{2}\right)^2 = \frac{1}{8}$. However, since the good pivot must be the median, we multiply by $\frac{1}{3}$, giving us $3 * \frac{1}{8} * \frac{1}{3} = \frac{1}{8}$
 
-The combined probability of getting a good pivot with the median-of-three method is $\frac{1}{8} + \frac{3}{8} + \frac{1}{8} = \frac{5}{8}$ or 62.5%. This is a simplification and the actual detailed computation considering the distribution of the 'good' pivots and the fixed positions of the first, middle and last elements would result in a percentage closer to the 68.75% mark. 
+The combined probability of getting a good pivot with the median-of-three method is $\frac{1}{8} + \frac{3}{8} + \frac{1}{8} = \frac{5}{8}$ or 62.5%. This is a simplification and the actual detailed computation considering the distribution of the 'good' pivots and the fixed positions of the first, middle and last elements would result in a percentage closer to the 68.75% mark
 
 **Reference**: https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort#:~:text=By%20the%20median%2C%20we%20mean,You%20can%20go%20even%20further.
 
